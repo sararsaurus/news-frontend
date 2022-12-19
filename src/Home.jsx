@@ -16,7 +16,7 @@ export function Home() {
   useEffect(handleIndexArticles, []);
 
   return (
-    <div>
+    <div className="container">
       <ArticlesIndex articles={articles} />
     </div>
   );
