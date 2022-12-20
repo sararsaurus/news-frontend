@@ -1,7 +1,9 @@
 export function Footer() {
   return (
-    <footer>
-      <p>Copyright 2022</p>
-    </footer>
+    <div className="container text-center">
+      <div className="row">
+        <div className="col">© 90's trust fund authentic woke!</div>
+      </div>
+    </div>
   );
 }

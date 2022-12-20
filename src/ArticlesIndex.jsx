@@ -6,7 +6,7 @@ export function ArticlesIndex(props) {
       <div className="row">
         {props.articles.map((article) => (
           <div className="col-4" key={article.title}>
-            <div class="card text-secondary">
+            <div className="card text-secondary">
               <h2 className="card-title text-center">{article.title}</h2>
               <p className="card-text">{article.description}</p>
               <p className="card-text">{article.publishedAt}</p>

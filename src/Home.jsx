@@ -4,6 +4,8 @@ import { ArticlesIndex } from "./ArticlesIndex";
 
 export function Home() {
   const [articles, setArticles] = useState([]);
+  const [isArticlesShowVisible, setIsArticlesShowVisible] = useState(false);
+  const [currentArticle, setCurrentArticle] = useState({});
 
   const handleIndexArticles = () => {
     // console.log("handleIndexArticles");
@@ -13,11 +15,20 @@ export function Home() {
     });
   };
 
+  const handleShowArticle = (article) => {
+    setIsArticlesShowVisible(true);
+    setCurrentArticle(article);
+  };
+
+  const handleHideArticle = () => {
+    setIsArticlesShowVisible(false);
+  };
+
   useEffect(handleIndexArticles, []);
 
   return (
     <div className="container">
-      <ArticlesIndex articles={articles} />
+      <ArticlesIndex articles={articles} onSelectArticle={handleShowArticle} />
     </div>
   );
 }

@@ -1,10 +1,35 @@
+import { Modal } from "./Modal";
+import { Signup } from "./Signup";
+import { LogoutLink } from "./LogoutLink";
+import { Login } from "./Login";
+import { useState } from "react";
+
 export function Header() {
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
+  const handleSignupShow = () => {
+    setIsSignupVisible(true);
+  };
+  const handleSignupClose = () => {
+    setIsSignupVisible(false);
+  };
+
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const handleLoginShow = () => {
+    setIsLoginVisible(true);
+  };
+  const handleLoginClose = () => {
+    setIsLoginVisible(false);
+  };
+
+  // const handleLogout = (event) => {
+  //   event.preventDefault();
+  //   delete axios.defaults.headers.common["Authorization"];
+  //   localStorage.removeItem("jwt");
+  //   window.location.href = "/";
+  // };
+
   return (
     <header>
-      {/* <nav>
-        <a href="#">Home</a> | <a href="#">Link</a>
-      </nav> */}
-
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -28,44 +53,21 @@ export function Header() {
                   Home
                 </a>
               </li>
+              | |
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
+                <a onClick={handleSignupShow} href="#">
+                  Signup
                 </a>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              | |
               <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
+                <a onClick={handleLoginShow} href="#">
+                  Login
+                </a>
+              </li>
+              ||
+              <li className="nav-item">
+                <LogoutLink />
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -77,6 +79,12 @@ export function Header() {
           </div>
         </div>
       </nav>
+      <Modal show={isSignupVisible} onClose={handleSignupClose}>
+        <Signup />
+      </Modal>
+      <Modal show={isLoginVisible} onClose={handleLoginClose}>
+        <Login />
+      </Modal>
     </header>
   );
 }
